@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './Navbar.css'
 
 const Navbar = () => {
@@ -16,7 +16,7 @@ const Navbar = () => {
                 <NavLink className={({isActive}) => isActive ? 'active-link' : 'link'} to='/orderlist'>Order List</NavLink>
             </div>
             <div className="user-info">
-                <p className='text-xl font-semibold text-teal-500 font-mono'>User</p>
+                <Link to='/login' className='text-xl font-semibold text-teal-500 font-mono'>Log In</Link>
             </div>
             </div>
         </nav>
