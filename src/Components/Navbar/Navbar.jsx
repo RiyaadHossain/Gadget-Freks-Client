@@ -9,7 +9,9 @@ const Navbar = () => {
     const [user] = useAuthState(auth);
     const logout = () => {
         signOut(auth);
-      }
+    }
+    
+
     return (
         <nav className='bg-slate-100'>
             <div className='h-20 flex justify-between items-center container mx-auto'>

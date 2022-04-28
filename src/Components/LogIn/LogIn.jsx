@@ -1,10 +1,19 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useAuthState, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../Firebase/Firebase.init'
+import { useLocation, useNavigate } from "react-router-dom";
 
 const LogIn = () => {
+  const location = useLocation()
+  const navigate = useNavigate()
+  const [user] = useAuthState(auth)
   const [signInWithGoogle] = useSignInWithGoogle(auth);
+
+  let from = location.state?.from?.pathname || "/";
+  if (user) {
+    navigate(from, {replace: true})
+  }
   return (
     <div className="flex items-center justify-center h-[70vh]">
       <div className="text-center">
