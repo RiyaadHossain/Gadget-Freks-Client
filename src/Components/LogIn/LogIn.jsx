@@ -1,7 +1,10 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import auth from '../Firebase/Firebase.init'
 
 const LogIn = () => {
+  const [signInWithGoogle] = useSignInWithGoogle(auth);
   return (
     <div className="flex items-center justify-center h-[70vh]">
       <div className="text-center">
@@ -14,7 +17,7 @@ const LogIn = () => {
           <span className="text-green-500">l</span>
           <span className="text-red-500">e</span>
         </h2>
-        <button className="flex items-center rounded-md border border-blue-700 bg-blue-200 py-3 mx-auto w-[200px] justify-center text-2xl">
+        <button onClick={() => signInWithGoogle()} className="flex items-center rounded-md border border-blue-700 bg-blue-200 py-3 mx-auto w-[200px] justify-center text-2xl">
           <FcGoogle className="text-4xl mr-3" />
           <span className="font-bold">Sign In</span>
         </button>
