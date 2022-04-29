@@ -12,7 +12,19 @@ const LogIn = () => {
 
   let from = location.state?.from?.pathname || "/";
   if (user) {
-    navigate(from, {replace: true})
+    
+    fetch('http://localhost:4000/login', {
+      method: 'POST',
+      body: JSON.stringify({ email: user.email }),
+      headers: {
+        'Content-type': 'application/json',
+      },
+    })
+    .then((response) => response.json())
+      .then((json) => {
+      localStorage.setItem("accessToken", json.token)
+      navigate(from, { replace: true })
+    });
   }
   return (
     <div className="flex items-center justify-center h-[70vh]">
